@@ -1,0 +1,10 @@
+#%RAML 1.0 Trait
+usage: Use for endpoints with paginatable fields
+description: Some fields of the <<resourcePathName | !singularize>> are paginatable
+queryParameters:
+    page[offset]?:
+      type: integer
+      description: The offset to start the requested elements from.
+    page[limit]?:
+      type: integer
+      description: The number of elements to respond with.

@@ -32,6 +32,10 @@ types:
         enum: [ tournament, season, open ]
       matches_count: integer
       category: Base
+traits:
+  filterable: !include traits/filterable.raml
+  sortable: !include traits/sortable.raml
+  paginatable: !include traits/paginatable.raml
 resourceTypes:
   resource: !include resourceTypes/resource.raml
 /challenges:
@@ -46,3 +50,8 @@ resourceTypes:
               message: "can't be empty"
             - pointer: "endTime"
               message: "must be in the future"
+  get:
+    is: [
+      filterable: { properties: "title / endTime / type / categoryId" },
+      sortable: { properties: "title / endTime / type / categoryId" }
+    ]

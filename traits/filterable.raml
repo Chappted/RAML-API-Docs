@@ -1,0 +1,7 @@
+#%RAML 1.0 Trait
+usage: Use for endpoints with filterable fields
+description: Some fields of the <<resourcePathName | !singularize>> are filterable
+queryParameters:
+    filter[<<properties>>]?:
+      type: string
+      description: Filterable according to JLS:API.
