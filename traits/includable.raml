@@ -1,0 +1,7 @@
+#%RAML 1.0 Trait
+usage: Use for endpoints with includable fields
+description: Some fields of the <<resourcePathName | !singularize>> are includable
+queryParameters:
+    include=<<relations>>?:
+      type: string
+      description: Includable according to JLS:API.

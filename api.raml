@@ -27,19 +27,44 @@ types:
       title: string
       description?: string
       password?: string
+      hasPassword: boolean
       endTime?: datetime
       type:
         enum: [ tournament, season, open ]
-      matches_count: integer
+      matchesCount: integer
       category: Base
+resourceTypes:
+  crud: !include resourceTypes/crud.raml
 traits:
   filterable: !include traits/filterable.raml
   sortable: !include traits/sortable.raml
   paginatable: !include traits/paginatable.raml
-resourceTypes:
-  resource: !include resourceTypes/resource.raml
+  includable: !include traits/includable.raml
 /challenges:
-  type: resource
+  displayName: Challenges
+  type: [
+    crud: {
+      requestExample: {
+          title: "FIFA 18 Season 1",
+          description: "The winter challenge inside Jamit Labs.",
+          password: "secret",
+          endTime: "2019-10-02T15:00:00Z",
+          type: "season",
+          categoryId: "4"
+      },
+      responseExample: {
+        title: "FIFA 18 Season 1",
+        description: "The winter challenge inside Jamit Labs.",
+        hasPassword: true,
+        endTime: "2019-10-02T15:00:00Z",
+        type: "season",
+        category: { typeName: "Category", identifier: "47" }
+      },
+      filterableProperties: "title,endTime,type,categoryId",
+      sortableProperties: "title,endTime,type,categoryId",
+      includableRelations: "category"
+    }
+  ]
   post:
     responses:
       422:
@@ -50,8 +75,3 @@ resourceTypes:
               message: "can't be empty"
             - pointer: "endTime"
               message: "must be in the future"
-  get:
-    is: [
-      filterable: { properties: "title / endTime / type / categoryId" },
-      sortable: { properties: "title / endTime / type / categoryId" }
-    ]

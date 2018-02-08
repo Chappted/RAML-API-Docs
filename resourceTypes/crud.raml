@@ -3,33 +3,46 @@ usage: Use for readable and writable resources
 description: The <<resourcePathName>> resource type
 get:
   description: Fetch multiple <<resourcePathName>>
-  is: [ paginatable ]
+  is: [
+    paginatable,
+    filterable: { properties: <<filterableProperties>> },
+    sortable: { properties: <<sortableProperties>> },
+    includable: { relations: <<includableRelations>> }
+  ]
   responses:
     200:
       body:
         type: <<resourcePathName | !singularize | !uppercamelcase>>[]
+        example: <<responseExample>>
 post:
   description: Create a new <<resourcePathName | !singularize>>
   body:
     type: <<resourcePathName | !singularize | !uppercamelcase>>
+    example: <<requestExample>>
   responses:
     201:
-      body: <<resourcePathName | !singularize | !uppercamelcase>>
+      body:
+        type: <<resourcePathName | !singularize | !uppercamelcase>>
+        example: <<responseExample>>
 /{identifier}:
   get:
     description: Fetch a specific <<resourcePathName | !singularize>>
+    is: [ includable: { relations: <<includableRelations>> } ]
     responses:
       200:
         body:
           type: <<resourcePathName | !singularize | !uppercamelcase>>
+          example: <<responseExample>>
   patch:
     description: Update a specific <<resourcePathName | !singularize>>
     body:
       type: <<resourcePathName | !singularize | !uppercamelcase>>
+      example: <<requestExample>>
     responses:
       200:
         body:
           type: <<resourcePathName | !singularize | !uppercamelcase>>
+          example: <<responseExample>>
   delete:
     description: Delete a specific <<resourcePathName | !singularize>>
     responses:
