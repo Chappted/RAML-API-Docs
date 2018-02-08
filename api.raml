@@ -1,24 +1,48 @@
 #%RAML 1.0
-title: Chappted API
-version: v1
-baseUri: https://chappted.herokuapp.com/api/v1
+title: Chappted
+version: 1
+baseUri: https://chappted.herokuapp.com/api/v{version}
+mediaType: application/json
 types:
-  TestType:
+  Base:
     type: object
     properties:
-      id: number
-      optional?: string
-      expanded:
-        type: object
-        properties:
-          count: number
-/helloWorld:
-  get:
+      typeName: string
+      identifier: string
+  Error:
+    type: object
+    properties:
+      pointer: string
+      message: string
+  Errors:
+    type: Error[]
+    minItems: 1
+  Category:
+    type: Base
+    properties:
+      name: string
+  Challenge:
+    type: Base
+    properties:
+      title: string
+      description?: string
+      password?: string
+      endTime?: datetime
+      type:
+        enum: [ tournament, season, open ]
+      matches_count: integer
+      category: Base
+resourceTypes:
+  resource: !include resourceTypes/resource.raml
+/challenges:
+  type: resource
+  post:
     responses:
-      200:
+      422:
         body:
-          application/json:
-            example: |
-              {
-                "message" : "Hello World"
-              }
+          type: Errors
+          example:
+            - pointer: "title"
+              message: "can't be empty"
+            - pointer: "endTime"
+              message: "must be in the future"

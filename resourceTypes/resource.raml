@@ -1,0 +1,35 @@
+#%RAML 1.0 ResourceType
+usage: Use for readable and writable resources
+description: The <<resourcePathName>> resource type
+get:
+  description: Fetch multiple <<resourcePathName>>
+  responses:
+    200:
+      body:
+        type: <<resourcePathName | !singularize | !uppercamelcase>>[]
+post:
+  description: Create a new <<resourcePathName | !singularize>>
+  body:
+    type: <<resourcePathName | !singularize | !uppercamelcase>>
+  responses:
+    201:
+      body: <<resourcePathName | !singularize | !uppercamelcase>>
+/{identifier}:
+  get:
+    description: Fetch a specific <<resourcePathName | !singularize>>
+    responses:
+      200:
+        body:
+          type: <<resourcePathName | !singularize | !uppercamelcase>>
+  patch:
+    description: Update a specific <<resourcePathName | !singularize>>
+    body:
+      type: <<resourcePathName | !singularize | !uppercamelcase>>
+    responses:
+      200:
+        body:
+          type: <<resourcePathName | !singularize | !uppercamelcase>>
+  delete:
+    description: Delete a specific <<resourcePathName | !singularize>>
+    responses:
+      204:
