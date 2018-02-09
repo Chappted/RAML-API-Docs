@@ -1,0 +1,38 @@
+Base:
+  type: object
+  properties:
+    typeName: string
+    identifier: string
+Error:
+  type: object
+  properties:
+    pointer: string
+    message: string
+Errors:
+  type: Error[]
+  minItems: 1
+Category:
+  type: Base
+  properties:
+    name: string
+Challenge:
+  type: Base
+  properties:
+    title: string
+    description?: string
+    endTime?: datetime
+    type:
+      enum: [ tournament, season, open ]
+ChallengeRequest:
+  type: Challenge
+  properties:
+    password?: string
+    categoryId: string
+  example: !include ../examples/challengeRequest.raml
+ChallengeResponse:
+  type: Challenge
+  properties:
+    hasPassword: boolean
+    matchesCount: integer
+    category: Base
+  example: !include ../examples/challengeResponse.raml

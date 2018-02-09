@@ -12,18 +12,15 @@ get:
   responses:
     200:
       body:
-        type: <<resourcePathName | !singularize | !uppercamelcase>>[]
-        example: <<responseExample>>
+        type: <<resourcePathName | !singularize | !uppercamelcase>>Response[]
 post:
   description: Create a new <<resourcePathName | !singularize>>
   body:
-    type: <<resourcePathName | !singularize | !uppercamelcase>>
-    example: <<requestExample>>
+    type: <<resourcePathName | !singularize | !uppercamelcase>>Request
   responses:
     201:
       body:
-        type: <<resourcePathName | !singularize | !uppercamelcase>>
-        example: <<responseExample>>
+        type: <<resourcePathName | !singularize | !uppercamelcase>>Response
 /{identifier}:
   get:
     description: Fetch a specific <<resourcePathName | !singularize>>
@@ -31,18 +28,15 @@ post:
     responses:
       200:
         body:
-          type: <<resourcePathName | !singularize | !uppercamelcase>>
-          example: <<responseExample>>
+          type: <<resourcePathName | !singularize | !uppercamelcase>>Response
   patch:
     description: Update a specific <<resourcePathName | !singularize>>
     body:
-      type: <<resourcePathName | !singularize | !uppercamelcase>>
-      example: <<requestExample>>
+      type: <<resourcePathName | !singularize | !uppercamelcase>>Request
     responses:
       200:
         body:
-          type: <<resourcePathName | !singularize | !uppercamelcase>>
-          example: <<responseExample>>
+          type: <<resourcePathName | !singularize | !uppercamelcase>>Response
   delete:
     description: Delete a specific <<resourcePathName | !singularize>>
     responses:
