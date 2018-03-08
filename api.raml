@@ -19,9 +19,9 @@ traits:
   displayName: Challenges
   type: [
     crud: {
-      filterableProperties: "title,endTime,type,categoryId",
-      sortableProperties: "title,endTime,type,categoryId",
-      includableRelations: "category"
+      filterableProperties: "title,endTime,challengeType.identifier,challengeCategory.identifier",
+      sortableProperties: "title,endTime,challengeType.identifier,challengeCategory.identifier",
+      includableRelations: "challengeCategory,challengeType"
     }
   ]
   post:
