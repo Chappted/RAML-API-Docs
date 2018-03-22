@@ -1,3 +1,4 @@
+# Helper Types
 Base:
   type: object
   properties:
@@ -11,28 +12,29 @@ Error:
 Errors:
   type: Error[]
   minItems: 1
+
+# Models
 Category:
-  type: Base
+  type: object
   properties:
     name: string
 Challenge:
-  type: Base
+  type: object
   properties:
     title: string
     description?: string
     endTime?: datetime
+    category: Base
     type:
       enum: [ tournament, season, open ]
 ChallengeRequest:
   type: Challenge
   properties:
     password?: string
-    categoryId: string
   example: !include ../examples/challengeRequest.raml
 ChallengeResponse:
-  type: Challenge
+  type: [ Challenge, Base]
   properties:
     hasPassword: boolean
     matchesCount: integer
-    category: Base
   example: !include ../examples/challengeResponse.raml
