@@ -1,8 +1,7 @@
 #%RAML 1.0
 title: Chappted
-version: 1
-baseUri: https://chappted.herokuapp.com/api/v{version}
-mediaType: application/json
+baseUri: https://chappted.herokuapp.com/api/v1
+mediaType: application/vnd.simple-api+json
 
 types: !include types/allTypes.raml
 
@@ -19,8 +18,8 @@ traits:
   displayName: Challenges
   type: [
     crud: {
-      filterableProperties: "title,endTime,type,categoryId",
-      sortableProperties: "title,endTime,type,categoryId",
+      filterableProperties: "title,endTime,type,category.identifier",
+      sortableProperties: "title,endTime,type,category.identifier",
       includableRelations: "category"
     }
   ]
@@ -31,6 +30,6 @@ traits:
           type: Errors
           example:
             - pointer: "title"
-              message: "can't be empty"
+              message: "can't be blank"
             - pointer: "endTime"
               message: "must be in the future"

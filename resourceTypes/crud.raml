@@ -29,7 +29,7 @@ post:
       200:
         body:
           type: <<resourcePathName | !singularize | !uppercamelcase>>Response
-  patch:
+  put:
     description: Update a specific <<resourcePathName | !singularize>>
     body:
       type: <<resourcePathName | !singularize | !uppercamelcase>>Request
