@@ -4,9 +4,13 @@
 </p>
 
 <p align="center">
-    <a href="https://www.bitrise.io/app/<TODO>">
-        <img src="https://www.bitrise.io/app/<TODO>.svg?token=<TODO>&branch=stable"
+    <a href="https://www.bitrise.io/app/bdba71cc96c2b0dc">
+        <img src="https://www.bitrise.io/app/bdba71cc96c2b0dc.svg?token=5vXhObqYE8IO4gEjmYJ1KQ&branch=stable"
              alt="Build Status">
+    </a>
+    <a href="http://api-docs.jamitlabs.com/Chappted/v1/api.html">
+        <img src="https://img.shields.io/badge/HTML-Generated%20Docs-blue.svg"
+             alt="HTML: Generated Docs">
     </a>
     <img src="https://img.shields.io/badge/RAML-1.0-FFAC45.svg"
          alt="RAML: 1.0">
