@@ -8,7 +8,7 @@
         <img src="https://www.bitrise.io/app/bdba71cc96c2b0dc.svg?token=5vXhObqYE8IO4gEjmYJ1KQ&branch=stable"
              alt="Build Status">
     </a>
-    <a href="http://api-docs.jamitlabs.com/Chappted/v1/api.html">
+    <a href="http://api-docs.jamitlabs.net/Chappted/v1/api.html">
         <img src="https://img.shields.io/badge/HTML-Generated%20Docs-blue.svg"
              alt="HTML: Generated Docs">
     </a>
