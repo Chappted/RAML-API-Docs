@@ -33,3 +33,25 @@ traits:
               message: "can't be blank"
             - pointer: "endTime"
               message: "must be in the future"
+
+/user:
+  displayName: User
+  type: [
+    crud: {
+      filterableProperties : "nickname" ,
+      sortableProperties : "nickname",
+      includableRelations : "challengeParticipation,
+                             challengeTeam,
+                             userCategoryRanking"
+    }
+  ]
+  post:
+    responses:
+      422:
+        body:
+          type: Errors
+          example:
+            - pointer: "nickname"
+              message: "can't be blank"
+            - pointer: "email"
+              message: "has to be"

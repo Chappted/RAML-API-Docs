@@ -14,6 +14,27 @@ Errors:
   minItems: 1
 
 # Models
+User:
+  type: object
+  properties:
+    identifier: string
+    nickname: string
+    email: string
+    password: string
+UserRequest:
+  type: User
+  properties:
+    nickname: string
+    email: string
+    password: string
+  example: !include ..examples/userRequest.raml
+UserResponse:
+  type: User
+  properties:
+    identifier: string
+    nickname: string
+    email: string
+  example: !include ..examples/userResponse.raml
 Category:
   type: object
   properties:
