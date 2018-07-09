@@ -4,6 +4,34 @@ Base:
   properties:
     typeName: string
     identifier: string
+ChallengeParticipation:
+  type: object
+  properties:
+    challenge: Challenge
+    isAdmin: boolean
+UserCategoryRanking:
+  type: object
+  properties:
+    category: Category
+    points: integer
+ChallengeTeam:
+  type: object
+  properties:
+    name: string
+    challengeTeamRanking: ChallengeTeamRanking
+    matchParticipation: MatchParticipation
+MatchParticipation:
+  type: object
+  properties:
+    points: integer
+    match: Match[]
+ChallengeTeamRanking:
+  type: object
+  properties:
+    points: integer
+Match:
+  type: object
+  properties:
 Error:
   type: object
   properties:
@@ -17,24 +45,23 @@ Errors:
 User:
   type: object
   properties:
-    identifier: string
     nickname: string
     email: string
-    password: string
+    challengeTeam: ChallengeTeam[]
 UserRequest:
-  type: User
+  type: [ User, Base ]
   properties:
-    nickname: string
-    email: string
     password: string
-  example: !include ..examples/userRequest.raml
+    challengeParticipation?: ChallengeParticipation[]
+    userCategoryRanking?: UserCategoryRanking[]
+  example: !include ../examples/userRequest.raml
 UserResponse:
-  type: User
+  type: [ User, Base ]
   properties:
     identifier: string
-    nickname: string
-    email: string
-  example: !include ..examples/userResponse.raml
+    challengeParticipation?: ChallengeParticipation[]
+    userCategoryRanking?: UserCategoryRanking[]
+  example: !include ../examples/userResponse.raml
 Category:
   type: object
   properties:
@@ -46,6 +73,9 @@ Challenge:
     description?: string
     endTime?: datetime
     category: Base
+    match?: Match[]
+    challengeTeam: ChallengeTeam[]
+    challengeTeamRanking?: ChallengeTeamRanking[]
     type:
       enum: [ tournament, season, open ]
 ChallengeRequest:
